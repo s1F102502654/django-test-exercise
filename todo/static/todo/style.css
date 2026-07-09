@@ -1,0 +1,230 @@
+body {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px 48px;
+  color: #2b2118;
+  background:
+    linear-gradient(90deg, rgba(120, 92, 54, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(120, 92, 54, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(180, 38, 38, 0.14), transparent 30%),
+    linear-gradient(135deg, #f7f0dc 0%, #efe2bf 52%, #dfc995 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+  line-height: 1.6;
+  animation: paper-breathe 12s ease-in-out infinite;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  inset: -120px 0 0;
+  z-index: 0;
+  pointer-events: none;
+  content: "";
+  background-repeat: repeat;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+body::before {
+  background-image:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 183, 197, 0.95) 0 34%, transparent 36%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 210, 218, 0.9) 0 28%, transparent 30%),
+    radial-gradient(ellipse at 50% 50%, rgba(236, 121, 143, 0.72) 0 24%, transparent 26%);
+  background-position: 18px 24px, 148px 86px, 286px 32px;
+  background-size: 180px 170px, 240px 230px, 310px 290px;
+  animation: sakura-fall 18s linear infinite;
+}
+
+body::after {
+  opacity: 0.72;
+  background-image:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 229, 234, 0.85) 0 30%, transparent 32%),
+    radial-gradient(ellipse at 50% 50%, rgba(247, 154, 172, 0.72) 0 26%, transparent 28%);
+  background-position: 88px 16px, 220px 108px;
+  background-size: 260px 240px, 360px 330px;
+  animation: sakura-fall-soft 26s linear infinite;
+}
+
+h1 {
+  border-bottom: 3px double #9f1d20;
+  padding-bottom: 8px;
+  color: #2c1f17;
+  letter-spacing: 0.04em;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.65);
+  animation: ink-settle 0.7s ease-out both;
+}
+
+a {
+  color: #8f1d1f;
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+a:hover {
+  color: #2b2118;
+  background: linear-gradient(transparent 62%, rgba(191, 139, 45, 0.36) 62%);
+}
+
+form {
+  margin-bottom: 24px;
+  padding: 20px;
+  border: 1px solid rgba(79, 53, 31, 0.28);
+  border-left: 8px solid #9f1d20;
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent),
+    rgba(255, 248, 226, 0.76);
+  box-shadow: 0 8px 22px rgba(64, 41, 22, 0.16);
+  animation: scroll-open 0.65s ease-out both;
+}
+
+label {
+  color: #513a25;
+  font-weight: 600;
+}
+
+input,
+button {
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 2px;
+  font-size: 1rem;
+}
+
+input {
+  width: min(100%, 360px);
+  margin-bottom: 12px;
+  border: 1px solid rgba(81, 58, 37, 0.42);
+  color: #2b2118;
+  background: rgba(255, 252, 240, 0.9);
+  outline: none;
+}
+
+input:focus {
+  border-color: #9f1d20;
+  box-shadow: 0 0 0 3px rgba(159, 29, 32, 0.14);
+}
+
+button {
+  border: 1px solid #6e1517;
+  color: #fff8e6;
+  background: linear-gradient(135deg, #9f1d20, #6f1417);
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 0 #45100f;
+  transition: transform 0.18s, box-shadow 0.18s, background-color 0.18s;
+}
+
+button:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #45100f;
+  background: linear-gradient(135deg, #b42626, #7b1619);
+}
+
+.text {
+  margin: 16px 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(79, 53, 31, 0.24);
+  border-left: 5px solid #243f61;
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent),
+    rgba(255, 248, 226, 0.7);
+  box-shadow: 0 8px 20px rgba(64, 41, 22, 0.13);
+  animation: scroll-open 0.65s ease-out both;
+  transition: transform 0.24s, border-color 0.24s, box-shadow 0.24s;
+}
+
+.text:hover {
+  transform: translateX(4px);
+  border-left-color: #9f1d20;
+  box-shadow: 0 10px 24px rgba(64, 41, 22, 0.2);
+}
+
+.text h2 {
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 22px;
+}
+
+li::marker {
+  color: #9f1d20;
+}
+
+@keyframes paper-breathe {
+  0%,
+  100% {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  50% {
+    background-position: 8px 8px, -8px -8px, 0 0, 0 0;
+  }
+}
+
+@keyframes ink-settle {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-open {
+  from {
+    opacity: 0;
+    transform: scaleY(0.96) translateY(10px);
+    transform-origin: top;
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+@keyframes sakura-fall {
+  from {
+    background-position: 18px -170px, 148px -230px, 286px -290px;
+    transform: translateX(-18px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(18px) rotate(2deg);
+  }
+
+  to {
+    background-position: 88px 820px, 78px 920px, 356px 980px;
+    transform: translateX(-18px) rotate(0deg);
+  }
+}
+
+@keyframes sakura-fall-soft {
+  from {
+    background-position: 88px -240px, 220px -330px;
+    transform: translateX(20px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateX(-22px) rotate(-2deg);
+  }
+
+  to {
+    background-position: 28px 900px, 280px 1040px;
+    transform: translateX(20px) rotate(0deg);
+  }
+}
