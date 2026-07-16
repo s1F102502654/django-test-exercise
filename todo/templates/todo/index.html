@@ -20,11 +20,24 @@
           name="title"
           type="text"
           placeholder="Input title"
+          value="{{ title_value }}"
+          required
+          class="{% if errors.title %}field-error{% endif %}"
         />
+        {% if errors.title %}<p class="error-message">Titleを入力してください。</p>{% endif %}
       </div>
       <div>
         <label for="dueInput">Due at:</label><br />
-        <input id="dueInput" name="due_at" type="datetime-local" />
+        <input
+          id="dueInput"
+          name="due_at"
+          type="datetime-local"
+          value="{{ due_at_value }}"
+          required
+          max="9999-12-31T23:59"
+          class="{% if errors.due_at %}field-error{% endif %}"
+        />
+        {% if errors.due_at %}<p class="error-message">Due atを正しく入力してください。</p>{% endif %}
       </div>
       <div>
         <button type="submit">Submit</button>
