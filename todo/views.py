@@ -1,5 +1,7 @@
+from datetime import timedelta
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django.utils import timezone
 from django.utils.timezone import make_aware
 from django.utils.dateparse import parse_datetime
 from todo.models import Task
@@ -17,6 +19,13 @@ def index(request):
         tasks = Task.objects.order_by("due_at")
     else:
         tasks = Task.objects.order_by("-posted_at")
+
+    now = timezone.now()
+    for task in tasks:
+        task.overdue = not task.completed and task.is_overdue(now)
+        task.due_soon = (not task.completed and not task.overdue
+                        and task.due_at is not None
+                        and task.due_at <= now + timedelta(days=1))
 
     context = {
         "tasks": tasks
