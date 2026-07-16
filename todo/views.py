@@ -9,11 +9,36 @@ from todo.models import Task
 # Create your views here.
 
 
+def parse_due_at(value):
+    if not value:
+        return None
+    try:
+        return parse_datetime(value)
+    except ValueError:
+        return None
+
+
 def index(request):
+    errors = {}
+    title_value = ""
+    due_at_value = ""
+
     if request.method == "POST":
-        task = Task(title=request.POST["title"],
-                    due_at=make_aware(parse_datetime(request.POST["due_at"])))
-        task.save()
+        title_value = request.POST.get("title", "")
+        due_at_value = request.POST.get("due_at", "")
+        title = title_value.strip()
+        due_at = parse_due_at(due_at_value)
+
+        if not title:
+            errors["title"] = True
+        if not due_at_value or due_at is None:
+            errors["due_at"] = True
+
+        if not errors:
+            task = Task(title=title, due_at=make_aware(due_at))
+            task.save()
+            title_value = ""
+            due_at_value = ""
 
     if request.GET.get("order") == "due":
         tasks = Task.objects.order_by("due_at")
@@ -28,7 +53,10 @@ def index(request):
                         and task.due_at <= now + timedelta(days=1))
 
     context = {
-        "tasks": tasks
+        "tasks": tasks,
+        "errors": errors,
+        "title_value": title_value,
+        "due_at_value": due_at_value,
     }
     return render(request, "todo/index.html", context)
 
@@ -48,14 +76,32 @@ def update(request, task_id):
         task = Task.objects.get(pk=task_id)
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
+    errors = {}
+    title_value = task.title
+    due_at_value = task.due_at.strftime("%Y-%m-%dT%H:%M") if task.due_at else ""
+
     if request.method == 'POST':
-        task.title = request.POST['title']
-        task.due_at = make_aware(parse_datetime(request.POST['due_at']))
-        task.save()
-        return redirect(detail, task_id)
+        title_value = request.POST.get('title', '')
+        due_at_value = request.POST.get('due_at', '')
+        title = title_value.strip()
+        due_at = parse_due_at(due_at_value)
+
+        if not title:
+            errors['title'] = True
+        if not due_at_value or due_at is None:
+            errors['due_at'] = True
+
+        if not errors:
+            task.title = title
+            task.due_at = make_aware(due_at)
+            task.save()
+            return redirect(detail, task_id)
 
     context = {
-        'task': task
+        'task': task,
+        'errors': errors,
+        'title_value': title_value,
+        'due_at_value': due_at_value,
     }
     return render(request, "todo/edit.html", context)
  
