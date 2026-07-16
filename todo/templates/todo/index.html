@@ -67,6 +67,10 @@
         <li>Status: Not Completed</li>
         {% endif %}
       </ul>
+      <form action="{% url 'delete' task.id %}" method="post" class="inline-delete-form" onsubmit="return confirm('「{{ task.title|escapejs }}」を削除しますか?');">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">削除</button>
+      </form>
     </div>
     {% endfor %}
   </body>
