@@ -3,11 +3,11 @@ body {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px 48px;
-  color: #2b2118;
+  color: #211710;
   background:
-    linear-gradient(90deg, rgba(120, 92, 54, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(120, 92, 54, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at top left, rgba(180, 38, 38, 0.14), transparent 30%),
+    linear-gradient(90deg, rgba(120, 92, 54, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(120, 92, 54, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(180, 38, 38, 0.08), transparent 30%),
     linear-gradient(135deg, #f7f0dc 0%, #efe2bf 52%, #dfc995 100%);
   background-size: 28px 28px, 28px 28px, 100% 100%, 100% 100%;
   font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
@@ -51,40 +51,46 @@ body::after {
 }
 
 h1 {
-  border-bottom: 3px double #9f1d20;
+  border-bottom: 3px double #7a1315;
   padding-bottom: 8px;
-  color: #2c1f17;
+  color: #211710;
   letter-spacing: 0.04em;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.65);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.75);
   animation: ink-settle 0.7s ease-out both;
 }
 
+p {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.55);
+}
+
 a {
-  color: #8f1d1f;
-  text-decoration: none;
+  color: #7a1015;
+  text-decoration: underline;
+  text-decoration-color: rgba(122, 16, 21, 0.35);
+  text-underline-offset: 2px;
   transition: color 0.2s, background-color 0.2s;
 }
 
 a:hover {
-  color: #2b2118;
-  background: linear-gradient(transparent 62%, rgba(191, 139, 45, 0.36) 62%);
+  color: #211710;
+  background: linear-gradient(transparent 60%, rgba(191, 139, 45, 0.5) 60%);
 }
 
 form {
   margin-bottom: 24px;
   padding: 20px;
   border: 1px solid rgba(79, 53, 31, 0.28);
-  border-left: 8px solid #9f1d20;
+  border-left: 8px solid #7a1315;
   border-radius: 2px;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent),
-    rgba(255, 248, 226, 0.76);
+    rgba(255, 251, 236, 0.92);
   box-shadow: 0 8px 22px rgba(64, 41, 22, 0.16);
   animation: scroll-open 0.65s ease-out both;
 }
 
 label {
-  color: #513a25;
+  color: #3a2716;
   font-weight: 600;
 }
 
@@ -99,43 +105,43 @@ button {
 input {
   width: min(100%, 360px);
   margin-bottom: 12px;
-  border: 1px solid rgba(81, 58, 37, 0.42);
-  color: #2b2118;
-  background: rgba(255, 252, 240, 0.9);
+  border: 1px solid rgba(58, 39, 22, 0.5);
+  color: #211710;
+  background: rgba(255, 253, 244, 0.95);
   outline: none;
 }
 
 input:focus {
-  border-color: #9f1d20;
-  box-shadow: 0 0 0 3px rgba(159, 29, 32, 0.14);
+  border-color: #7a1315;
+  box-shadow: 0 0 0 3px rgba(122, 19, 21, 0.2);
 }
 
 button {
-  border: 1px solid #6e1517;
+  border: 1px solid #5c1012;
   color: #fff8e6;
-  background: linear-gradient(135deg, #9f1d20, #6f1417);
+  background: linear-gradient(135deg, #8a181b, #5c1012);
   cursor: pointer;
   font-weight: 700;
   letter-spacing: 0.04em;
-  box-shadow: 0 4px 0 #45100f;
+  box-shadow: 0 4px 0 #3a0d0c;
   transition: transform 0.18s, box-shadow 0.18s, background-color 0.18s;
 }
 
 button:hover {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #45100f;
-  background: linear-gradient(135deg, #b42626, #7b1619);
+  box-shadow: 0 2px 0 #3a0d0c;
+  background: linear-gradient(135deg, #a32023, #6e1417);
 }
 
 .text {
   margin: 16px 0;
   padding: 16px 18px;
   border: 1px solid rgba(79, 53, 31, 0.24);
-  border-left: 5px solid #243f61;
+  border-left: 5px solid #1d3552;
   border-radius: 2px;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent),
-    rgba(255, 248, 226, 0.7);
+    rgba(255, 251, 236, 0.88);
   box-shadow: 0 8px 20px rgba(64, 41, 22, 0.13);
   animation: scroll-open 0.65s ease-out both;
   transition: transform 0.24s, border-color 0.24s, box-shadow 0.24s;
@@ -143,7 +149,7 @@ button:hover {
 
 .text:hover {
   transform: translateX(4px);
-  border-left-color: #9f1d20;
+  border-left-color: #7a1315;
   box-shadow: 0 10px 24px rgba(64, 41, 22, 0.2);
 }
 
@@ -156,7 +162,7 @@ ul {
 }
 
 li::marker {
-  color: #9f1d20;
+  color: #7a1315;
 }
 
 @keyframes paper-breathe {
