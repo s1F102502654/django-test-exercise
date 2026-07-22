@@ -134,6 +134,36 @@ button:hover {
   margin-top: 0;
 }
 
+.inline-delete-form {
+  margin: 8px 0 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  animation: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-button {
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  color: rgba(43, 33, 24, 0.45);
+  background: none;
+  box-shadow: none;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.delete-button:hover {
+  transform: none;
+  color: #9f1d20;
+  background: none;
+  box-shadow: none;
+  text-decoration: underline;
+}
+
 /* 期限があと1日に迫ったタスク */
 .text.due-soon {
   border-left-color: #bf8b2d;
